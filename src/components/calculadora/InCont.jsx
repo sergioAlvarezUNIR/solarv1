@@ -4,11 +4,13 @@ import { InForm } from "./InForm";
 
 export const InCont = (props) => {
 
+
+
     return (
       <div>
           <p>InCont</p>  
           <DragMap/> 
-          <InForm/>
+          <InForm inLat={props.inLat} setInLat={props.setInLat}/>
       </div>
     );
   };

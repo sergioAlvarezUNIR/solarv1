@@ -3,8 +3,13 @@ import { useForm } from "react-hook-form";
 import "../../styles/InForm.css";
 
 
+                 
 
 export const InForm = (props) => {
+
+
+
+
 
     const { register, formState:{ errors }, handleSubmit } = useForm({
       defaultValues:{
@@ -22,6 +27,8 @@ export const InForm = (props) => {
 
     const onSubmit = (data) => {
       console.log(data);
+      props.setInLat(data.lat);
+
 
     }
 
@@ -29,6 +36,8 @@ export const InForm = (props) => {
 
 
     return (
+
+     
       <div className="inform">
           <h2>Formulario</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -80,5 +89,6 @@ export const InForm = (props) => {
             <input type="submit" value="Enviar" />
           </form>
       </div>
+    
     );
   };
