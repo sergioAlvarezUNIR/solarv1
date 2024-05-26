@@ -8,6 +8,8 @@ body {
 .inform form {
   max-width: 500px;
   margin: 0 auto;
+  padding-top: 10%;
+  padding-bottom: 30%;
 }
 
 .inform h1 {

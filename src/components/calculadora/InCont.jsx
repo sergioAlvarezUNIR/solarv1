@@ -1,17 +1,20 @@
 import React from "react";
+
 import { DragMap } from "./DragMap";
 import { InForm } from "./InForm";
 import "../../styles/InCont.css"
 
 export const InCont = (props) => {
 
+  
 
 
     return (
       <div className="incont">
-          <h1>Calculadora Sistema Solar</h1>  
-          <DragMap/> 
-          <InForm inLat={props.inLat} setInLat={props.setInLat}/>
+          
+          {props.isShown==="DragMap" &&<DragMap inLat={props.inLat} setInLat={props.setInLat} updateRad={props.updateRad} setUpdateRad={props.setUpdateRad} isShown={props.isShown} setIsShown={props.setIsShown}/>}
+          {props.isShown==="InForm" && <InForm inLat={props.inLat} setInLat={props.setInLat} updateRad={props.updateRad} setUpdateRad={props.setUpdateRad} isShown={props.isShown} setIsShown={props.setIsShown}/>}
+          
       </div>
     );
   };

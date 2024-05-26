@@ -11,10 +11,11 @@ export const InForm = (props) => {
 
 
 
-    const { register, formState:{ errors }, handleSubmit } = useForm({
-      defaultValues:{
+    const { register, formState:{ errors }, handleSubmit } = useForm ({
+      defaultValues: {
         lat: '175',
         lon: '-70',
+ 
         area: '20',
         ori: 'norte',
         inc: '10°',
@@ -23,13 +24,20 @@ export const InForm = (props) => {
         excedente: '3',
         consumo: '100'
       }
-    });
+    })
 
     const onSubmit = (data) => {
+
+     
+
       console.log(data);
       props.setInLat(data.lat);
 
+      props.setIsShown("OutCont");
 
+      window.location.href = '/#calculadora';
+
+      
     }
 
    
@@ -49,18 +57,28 @@ export const InForm = (props) => {
               })}/>
               {errors.lat?.type === 'required' && <p>El campo es requerido</p>}
               {errors.lat?.type === 'maxLength' && <p>El campo debe tener menos de 10 caracteres</p>}
-
             </div>
             <div>
               <label>Ubicación (Longitud)</label>
               <input type="text" {...register('lon')}/>
             </div>
+
+            <div>
+              <label>Radiación promedio {window.radVar}</label>
+              <input type="text" {...register('rad', {
+                required: true,
+                maxLength: 10
+              })} defaultValue="3"/>
+              {errors.rad?.type === 'required' && <p>El campo es requerido</p>}
+              {errors.rad?.type === 'maxLength' && <p>El campo debe tener menos de 10 caracteres</p>}
+            </div>
+
             <div>
               <label>Área disponible para paneles</label>
               <input type="text" {...register('area')}/>
             </div>
             <div>
-              <label>Orientación aproximada tejado)</label>
+              <label>Orientación aproximada tejado</label>
               <input type="text" {...register('ori')}/>
             </div>
             <div>
@@ -86,7 +104,7 @@ export const InForm = (props) => {
               <label>Consumo promedio mes</label>
               <input type="text" {...register('consumo')}/>
             </div>
-            <input type="submit" value="Enviar" />
+            <input type="submit" value="Enviar"></input>
           </form>
       </div>
     

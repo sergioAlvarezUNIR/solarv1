@@ -12,14 +12,14 @@ async function initMap() {
     const { Map, InfoWindow } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
     const map = new Map(document.getElementById("map"), {
-      center: { lat: 37.39094933041195, lng: -122.02503913145092 },
-      zoom: 14,
+      center: { lat: 40.463667, lng: -3.74922 },
+      zoom: 5,
       mapId: "4504f8b37365c3d0",
     });
     const infoWindow = new InfoWindow();
     const draggableMarker = new AdvancedMarkerElement({
       map,
-      position: { lat: 37.39094933041195, lng: -122.02503913145092 },
+      position: { lat: 40.463667, lng: -3.74922 },
       gmpDraggable: true,
       title: "This marker is draggable.",
     });
@@ -36,6 +36,13 @@ async function initMap() {
       window.latVar=position.lat
       window.lonVar=position.lng
       console.log("dentro " + window.latVar);
+
+
+                                  
+                               
+
+
+
       
     
 
@@ -44,7 +51,7 @@ async function initMap() {
         longitud: position.lng 
       }
 
-      console.log(objeto);
+
 
       coordUpdate();
 

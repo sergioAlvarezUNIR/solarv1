@@ -1,3 +1,10 @@
+.outcont h2{
+  color: #bf1650;
+  font-weight: 200;
+ text-align: center;
+}
+
+
 .cont {
     display: flex;
     flex-direction: row;
