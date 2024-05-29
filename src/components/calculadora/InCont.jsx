@@ -13,7 +13,7 @@ export const InCont = (props) => {
       <div className="incont">
           
           {props.isShown==="DragMap" &&<DragMap inLat={props.inLat} setInLat={props.setInLat} updateRad={props.updateRad} setUpdateRad={props.setUpdateRad} isShown={props.isShown} setIsShown={props.setIsShown}/>}
-          {props.isShown==="InForm" && <InForm inLat={props.inLat} setInLat={props.setInLat} updateRad={props.updateRad} setUpdateRad={props.setUpdateRad} isShown={props.isShown} setIsShown={props.setIsShown}/>}
+          {props.isShown==="InForm" && <InForm inLat={props.inLat} setInLat={props.setInLat} updateRad={props.updateRad} setUpdateRad={props.setUpdateRad} isShown={props.isShown} setIsShown={props.setIsShown} valSistOg={props.valSistOg} setValSistOg={props.setValSistOg} tamanoSs={props.tamanoSs} setTamanoSs={props.setTamanoSs} data={props.data}/>}
           
       </div>
     );

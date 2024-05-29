@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useForm } from "react-hook-form";
 import "../../styles/InForm.css";
 
@@ -11,11 +12,11 @@ export const InForm = (props) => {
 
 
 
-    const { register, formState:{ errors }, handleSubmit } = useForm ({
+    const { register, formState:{ errors }, handleSubmit} = useForm ({
       defaultValues: {
-        lat: '175',
-        lon: '-70',
- 
+        //lat: '175',
+        //lon: '-70',
+        //rad: window.radVar,
         area: '20',
         ori: 'norte',
         inc: '10°',
@@ -26,17 +27,14 @@ export const InForm = (props) => {
       }
     })
 
-    const onSubmit = (data) => {
+    const onSubmit = (datainform) => {   
 
-     
-
-      console.log(data);
-      props.setInLat(data.lat);
-
+      
+      props.setInLat(datainform.lat);
       props.setIsShown("OutCont");
-
-      window.location.href = '/#calculadora';
-
+      window.location.href = '/#calculadora';     
+      props.setValSistOg(props.data.valkwpog * (datainform.consumo / window.radVar));
+      console.log(datainform);
       
     }
 
@@ -49,8 +47,9 @@ export const InForm = (props) => {
       <div className="inform">
           <h2>Formulario</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
+            {/*
             <div>
-              <label>Ubicación (Latitud)</label>
+               Este es un comentario en React <label>Ubicación (Latitud)</label>
               <input type="text" {...register('lat', {
                 required: true,
                 maxLength: 10
@@ -68,10 +67,12 @@ export const InForm = (props) => {
               <input type="text" {...register('rad', {
                 required: true,
                 maxLength: 10
-              })} defaultValue="3"/>
+              })} defaultValue={props.updateRad}/>
               {errors.rad?.type === 'required' && <p>El campo es requerido</p>}
               {errors.rad?.type === 'maxLength' && <p>El campo debe tener menos de 10 caracteres</p>}
             </div>
+
+            */}
 
             <div>
               <label>Área disponible para paneles</label>
