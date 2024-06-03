@@ -1,11 +1,4 @@
-
-
-
-
-
 let objeto
-
-
 
 async function initMap() {
     // Request needed libraries.
@@ -14,7 +7,7 @@ async function initMap() {
     const map = new Map(document.getElementById("map"), {
       center: { lat: 40.463667, lng: -3.74922 },
       zoom: 5,
-      mapId: "4504f8b37365c3d0",
+      mapId: "4504f8b37365c3d0"
     });
     const infoWindow = new InfoWindow();
     const draggableMarker = new AdvancedMarkerElement({
@@ -37,24 +30,12 @@ async function initMap() {
       window.lonVar=position.lng
       console.log("dentro " + window.latVar);
 
-
-                                  
-                               
-
-
-
-      
-    
-
       objeto = {
         latitud: position.lat,
         longitud: position.lng 
       }
 
-
-
       coordUpdate();
-
 
     });
   }

@@ -11,17 +11,19 @@ export const OutCont = (props) => {
 
     return (
       <div className="outcont">
-        <h2>!Felicitaciones! Esta es la información de tu proyecto:</h2>
+        <h2>!Felicitaciones! Esta es la información de tu proyecto!</h2>
         <div className="cont">          
           <div className="cont_card">
           <p>El valor aproximado del proyecto de sistema solar es de</p>
           <h3>EUR$ {Number(props.valSistOg).toFixed(2)}</h3>       
           </div>
           <div className="cont_card">
-          <p>El ahorro aproximado en su factura de energía es de  EUR$X,XXX</p> 
+          <p>El ahorro aproximado anualmente es de  </p> 
+          <h3>% {Number(props.porAhoSs).toFixed(0)}</h3>
           </div>
           <div className="cont_card">
-          <p>La rentabilidad del proyecto es de EUR$X,XXX</p> 
+          <p>Tu contribución ambiental aproximada anualmente es de </p>
+          <h3>{Number(props.contAmb).toFixed(2)} tCO2 </h3> 
           </div>
         </div>
       </div>

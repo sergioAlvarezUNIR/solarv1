@@ -12,29 +12,46 @@ export const InForm = (props) => {
 
 
 
-    const { register, formState:{ errors }, handleSubmit} = useForm ({
+    const { register, handleSubmit} = useForm ({
       defaultValues: {
         //lat: '175',
         //lon: '-70',
         //rad: window.radVar,
         area: '20',
-        ori: 'norte',
-        inc: '10°',
+        //ori: 'norte',
+        //inc: '10°',
         inmueble: 'residencial',
-        tarifa: '10',
-        excedente: '3',
-        consumo: '100'
+        tarifa: '0.2347',
+        excedente: '0.06',
+        consumo: '1300'
       }
     })
 
-    const onSubmit = (datainform) => {   
+    const onSubmit = (datainform) => {
 
-      
       props.setInLat(datainform.lat);
+
       props.setIsShown("OutCont");
-      window.location.href = '/#calculadora';     
+
+      window.location.href = '/#calculadora';
+
+      props.setTamanoSs(datainform.consumo / window.radVar);
+
+     
       props.setValSistOg(props.data.valkwpog * (datainform.consumo / window.radVar));
+
       console.log(datainform);
+
+      //Cálculo del ahorro aproximado
+
+      props.setPorAhoSs(12 * datainform.tarifa * (datainform.consumo / window.radVar));
+
+      //Cálculo de la contribución ambiental
+
+      //props.setContAmb(12*datainform.consumo*(window.factorTco2/1000));
+      props.setContAmb(12*datainform.consumo*(window.factorTco2/1000));
+
+
       
     }
 
@@ -45,7 +62,7 @@ export const InForm = (props) => {
 
      
       <div className="inform">
-          <h2>Formulario</h2>
+          <h2>Por favor ingresa la siguiente información</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             {/*
             <div>
@@ -75,9 +92,10 @@ export const InForm = (props) => {
             */}
 
             <div>
-              <label>Área disponible para paneles</label>
+              <label>Área disponible para paneles ( m2 )</label>
               <input type="text" {...register('area')}/>
             </div>
+            {/*
             <div>
               <label>Orientación aproximada tejado</label>
               <input type="text" {...register('ori')}/>
@@ -86,6 +104,7 @@ export const InForm = (props) => {
               <label>Inclinación aproximada tejado</label>
               <input type="text" {...register('inc')}/>
             </div>
+            */}
             <div>
               <label>Tipo de inmueble</label>
               <select {...register('inmueble')}>
@@ -94,15 +113,15 @@ export const InForm = (props) => {
               </select>
             </div>
             <div>
-              <label>Tarifa energía</label>
+              <label>Tarifa energía ( EUR / kWH )</label>
               <input type="text" {...register('tarifa')}/>
             </div>
             <div>
-              <label>Precio excedente</label>
+              <label>Precio excedente ( EUR / kWh )</label>
               <input type="text" {...register('excedente')}/>
             </div>
             <div>
-              <label>Consumo promedio mes</label>
+              <label>Consumo promedio mes ( kWh )</label>
               <input type="text" {...register('consumo')}/>
             </div>
             <input type="submit" value="Enviar"></input>
